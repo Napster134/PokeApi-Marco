@@ -1,4 +1,5 @@
 package com.pokesdk;
+
 import java.net.http.*;
 import java.io.IOException;
 import java.net.URI;
@@ -18,7 +19,8 @@ public class PokeSdk {
 
     // PUBLIC METHODS
 
-    public Pokemon getPokemon(String idOrName) throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+    public Pokemon getPokemon(String idOrName)
+            throws JsonParseException, JsonMappingException, IOException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(queryApi("pokemon", idOrName), Pokemon.class);
     }
@@ -28,18 +30,21 @@ public class PokeSdk {
         return mapper.readValue(queryApi("pokemon"), Pokemons.class);
     }
 
-    public Pokemons getPokemons(int offset, int limit) throws JsonParseException, JsonMappingException, IOException, InterruptedException {
-        String filter = "pokemon/" + "?offset="+ offset +"&limit="+ limit;
+    public Pokemons getPokemons(int offset, int limit)
+            throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+        String filter = "pokemon/" + "?offset=" + offset + "&limit=" + limit;
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(queryApi(filter), Pokemons.class);
     }
 
-    public Generation getGeneration(String idOrName) throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+    public Generation getGeneration(String idOrName)
+            throws JsonParseException, JsonMappingException, IOException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(queryApi("generation", idOrName), Generation.class);
     }
 
-    public Generations getGenerations() throws JsonParseException, JsonMappingException, IOException, InterruptedException {
+    public Generations getGenerations()
+            throws JsonParseException, JsonMappingException, IOException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(queryApi("generation"), Generations.class);
     }
@@ -53,9 +58,9 @@ public class PokeSdk {
             endpoint = hostApi + "/" + endpoint + "/" + idOrName;
         }
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create(endpoint))
-            .GET()
-            .build();
+                .uri(URI.create(endpoint))
+                .GET()
+                .build();
         HttpResponse<String> response;
         response = httpClient.send(request, BodyHandlers.ofString());
         return response.body();

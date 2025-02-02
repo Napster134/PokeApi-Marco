@@ -40,7 +40,6 @@ public class PokePages {
         try {
             if (currentPageData.getNext() == null) {
                 nextPageExists = false;
-                return null;
             } else {
                 currentPageData = connection.getPokemons(currentPageOffset += offset, limit);
                 previousPageExists = true; 
@@ -55,7 +54,6 @@ public class PokePages {
         try {
             if (currentPageData.getPrevious() == null) {
                 previousPageExists = false;
-                return null;
             } else {
                 currentPageData = connection.getPokemons(currentPageOffset -= offset, limit);
             }
