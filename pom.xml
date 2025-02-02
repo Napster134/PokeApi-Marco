@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.pokesdk</groupId>
+  <artifactId>pokesdk</artifactId>
+  <version>1.0.0</version>
+
+  <name>pokesdk</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+  </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.4</version>
+        </dependency>
+    </dependencies>
+
+  <build>
+      <plugins>
+          <plugin>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>21</source>
+                  <target>21</target>
+              </configuration>
+          </plugin>
+          <plugin>
+              <groupId>org.jsonschema2pojo</groupId>
+              <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+              <version>1.2.2</version>
+              <configuration>
+                  <sourceDirectory>${basedir}/src/main/java/com/pokesdk/resources/</sourceDirectory>
+                  <includeHashcodeAndEquals>false</includeHashcodeAndEquals>
+                  <includeToString>false</includeToString>
+                  <removeOldOutput>true</removeOldOutput>
+              </configuration>
+              <executions>
+                  <execution>
+                      <goals>
+                        <goal>generate</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+      </plugins>
+  </build>
+
+</project>
+
+
