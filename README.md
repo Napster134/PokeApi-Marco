@@ -83,6 +83,12 @@ To loop through the pages, simply:
             }
 ```
 
+## Testing 
+
+Tests are located within `src\test\java\com\pokesdk\AppTest.java` 
+To execute these tests, run: 
+mvn test
+
 
 ## Dependancies 
 
